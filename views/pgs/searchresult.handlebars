@@ -1,0 +1,133 @@
+
+<div class=" mt-5 mb-3 mx-auto">
+<h5>
+  <div class="card-header">Results</div>
+</h5>
+<div class="table-responsive mb-5 mt-5">
+    <table class="table table-bordered mb-5" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                 <th>Image</th>
+        <th>Location</th>
+        <th>Details</th>
+        <th>Price</th>
+        <th>Gender</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Country</th>
+        <th>DealerType</th>       
+        {{#if user}}
+        <th>Owner</th>
+        <th>Number</th>
+        {{else}}
+        {{/if}}
+        {{#if user}}
+        <th>Info</th>
+        {{else}}
+         <th>Contact</th>
+         {{/if}}
+
+            </tr>
+        </thead>
+        {{!-- {{ find users}} --}}
+        <tbody>
+            {{#each pgs}}
+            <tr >
+                <td>
+         <a href = "{{pgimage}}"><img src="{{pgimage}}" style="height:40%;width:130px" class=""></a>
+        </td>
+        <td>
+          <p>{{location}}</p>
+        </td>
+        <td>
+          <p> {{details}}</p>
+        </td>
+        <td>
+          <p> {{price}}</p>
+        </td>
+        <td>
+          <p> {{gender}}</p>
+        </td>
+        <td>
+          <p> {{city}}</p>
+        </td>
+        <td>
+          <p> {{state}}</p>
+        </td>
+        <td>
+          <p> {{country}}</p>
+        </td>
+        <td>
+          <p> {{dealertype}}</p>
+        </td>
+       
+        {{#if ../user}}
+        <td>
+          <p>{{ownername}}</p>
+        </td>
+        <td>
+          <p> {{ownernumber}}</p>
+        </td>
+        {{/if}}
+      
+        {{#if ../user}}
+        <td>
+          {{#if (checkPending id ../user)}}
+          <p class="btn" style="background-color:yellowgreen" >Request Pending..</p>        
+          {{else}}
+          {{#if (checkApproval id ../user)}}
+          <p class="btn" style="background-color: rgb(218, 162, 117)" >Request Approved..</p>
+          {{else}}
+          <form action="/pgs/bookrequest/{{id}}?_method=PUT" method="post">
+            <button class="btn btn-info small" type="submit">Book this PG Now</button>
+          </form>          
+          {{/if}}
+          {{/if}}
+        </td>
+        {{else}}
+        <td> <button type="button" class="btn btn-info mb-5" data-toggle="modal" data-target="#exampleModal">
+            Contact Owner
+          </button></td>
+        {{/if}}
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+</div>
+<!-- Button trigger modal -->
+{{!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Contact Owner
+</button> --}}
+
+<!-- Modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contact Owner</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card card-body">
+
+          Sign-up to Book your PG!!
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        {{!-- {{#if ../user}}
+        {{else}} --}}
+        <a class="btn btn-primary small" href="/users/register">Sign-up</a>
+        <a class="btn btn-primary small" href="/users/login">Login</a>
+        {{!-- {{/if}} --}}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- </div> --}}

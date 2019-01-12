@@ -1,0 +1,54 @@
+<div class="container mt-3 mb-5">
+  <h3 class="card-header">Your Added Pg's : </h3>
+<div class="table-responsive mb-5 mt-5">
+  <table class="table table-bordered mb-5 table-hover" id="dataTable" width="100%" cellspacing="0">
+
+      <thead>
+        <tr>
+          <th>PG Image</th>
+          <th>Location</th>
+          <th>Details</th>
+          <th>Owner-Name</th>
+          <th>Owner-Number</th>
+          <th>Price</th>
+          <th>Gender Preferred</th>
+          <th>Dealer-Type</th>
+          <th>City</th>
+          <th>Requests</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#each pgs}}
+        <tr>
+          <td><img src ="{{pgimage}}" class="img-fluid rounded-circle" ></td>
+
+          <td> {{location}}</td>
+          <td> {{details}}</td>
+          <td>{{ownername}}</td>
+          <td>{{ownernumber}}</td>
+          <td> {{price}}</td>
+          <td> {{gender}}</td>
+          <td>{{dealertype}}</td>
+          <td>{{city}}</td>
+          <td> <a class="btn  mb-2" href="/pgs/viewrequest/{{id}}"> 
+            <i class="fas fa-bell fa-fw"></i>
+            <span class="badge badge-danger">{{userrequests.length}}</span>
+             </a>
+         </td>
+          <td> <a class="btn btn-dark btn-block mb-2" href="/pgs/{{id}}">Edit</a></td>
+          <td>
+            <form method="post" action="/pgs/{{id}}?_method=DELETE">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" class="btn btn-danger btn-block" value="Delete">
+            </form>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+
+  </table>
+</div>
+</div>

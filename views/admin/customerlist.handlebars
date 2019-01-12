@@ -1,0 +1,39 @@
+<h4 class="mt-3">Customer's List</h4>
+
+<div class="table-responsive mt-5 mb-5">
+  <table class="table table-bordered" id="dataTable" cellspacing="0">
+  <thead><tr>
+
+                <th>Image</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Phone Number</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody >
+          {{#each users}}
+            <tr >
+              <td>
+         <a href = "{{profileimage}}"><img src="{{profileimage}}" style="height:40px;width:40px" class="image-fluid rounded-circle"></a>
+               </td>
+                <td> {{name}}</td>
+                <td> {{email}}</td>
+                <td>{{gender}}</td>
+                <td>{{address}}</td>
+                <td>{{phonenumber}}</td>
+               <td>
+                  <form method="post" action="/admin/{{id}}?_method=DELETE">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" class="btn btn-danger btn-block" value="Delete">
+    </form>
+               </td>
+            </tr>            
+{{/each}}
+            </tbody>
+    {{!-- <p>{{image}}</p> --}}   
+  {{!-- </div> --}} 
+</table>
+</div>

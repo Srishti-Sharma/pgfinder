@@ -1,0 +1,199 @@
+{{!-- <table class="display exam">
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Details</th>
+      <th>Owner-Name</th>
+      <th>Owner-Number</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead> --}}
+  {{!--
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> {{details}}</td>
+      <td>{{ownername}}</td>
+      <td>{{ownernumber}}</td>
+    </tr>
+  </tbody>
+</table> --}}
+{{!-- card card-body mb-2 mt-5 --}}
+<div class="conatiner mt-3 mb-3 w-75 mx-auto">
+<h5>
+  <div class="card-header">Filter</div>
+</h5>
+{{!-- <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" id="mySearch" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> --}}
+<form class="form-group" action="/pgs/searchfilter" method="POST">
+  <div class="table-responsive-xl " style="overflow-y: hidden">
+    <table class="table table-borderless table-light">
+      <tr>
+        <div class="col mr-1">
+          <th>Location</th>
+          <th> Price </th>
+          <th> Gender </th>
+          <th> DealerType </th>
+      </tr>
+      <tr>
+        <td><input type="text" name="location" value="{{location}}"></td>
+        <td> Min : <input type="number" name="min" value="0"></td>
+        <td> <input type="radio" name="gender" value="male"> Male
+        <td> <input type="radio" name="dealertype"> Owner </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td> Max : <input type="number" name="max" value="0"></td>
+        <td> <input type="radio" name="gender" value="female"> Female </td>
+        <td> <input type="radio" name="dealertype"> Dealer(Broker) </td>
+      </tr>
+      <tr>
+        <td></td>
+        <Td></Td>
+        <Td> <input type="radio" name="gender"> Any </Td>
+        <Td> </Td>
+      </tr>
+  </div>
+  </tr>
+
+  </table>
+
+  </div>
+  <button class=" mb-5 mx-auto btn-dark text-black clearfix z-1" type="submit"> Apply</button>
+
+</form>
+</div >
+{{!-- <div id="myTable"> --}}
+{{#each pgs}}
+<div class="conatiner mt-3 mb-5 mx-auto w-75">
+<div class="table-responsive-xl" >
+  <table class="table table-hover table-borderless text-center" >
+    <thead class="thead-dark">
+
+      <tr>
+         <th>Image</th>
+        <th>Location</th>
+        <th>Details</th>
+        <th>Price</th>
+        <th>Gender</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Country</th>
+        <th>DealerType</th>
+       
+        {{#if ../user}}
+        <th>OwnerName</th>
+        <th>OwnerNumber</th>
+        {{/if}}
+      </tr>
+    </thead>
+{{!-- style="background-color:rgba(67, 176, 196, 0.5)"  style="background-color: rgb(164, 166, 168)" style="background-color: rgb(150, 79, 69) , "--}}
+    <tbody style="background-color:rgba(216, 219, 226, 0.918)" >
+      <tr >
+         <td>
+         <a href = "{{pgimage}}"><img src="{{pgimage}}" style="height:50%;width:70%" class="img-fluid "></a>
+        </td>
+        <td>
+          <p>{{location}}</p>
+        </td>
+        <td>
+          <p> {{details}}</p>
+        </td>
+        <td>
+          <p> {{price}}</p>
+        </td>
+        <td>
+          <p> {{gender}}</p>
+        </td>
+        <td>
+          <p> {{city}}</p>
+        </td>
+        <td>
+          <p> {{state}}</p>
+        </td>
+        <td>
+          <p> {{country}}</p>
+        </td>
+        <td>
+          <p> {{dealertype}}</p>
+        </td>
+       
+        {{#if ../user}}
+        <td>
+          <p>{{ownername}}</p>
+        </td>
+        <td>
+          <p> {{ownernumber}}</p>
+        </td>
+        {{/if}}
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        {{#if ../user}}
+        <td>
+          {{#if (checkPending id ../user)}}
+          <p class="btn" style="background-color:yellowgreen" >Request Pending..</p>        
+          {{else}}
+          {{#if (checkApproval id ../user)}}
+          <p class="btn" style="background-color: rgb(218, 162, 117)" >Request Approved..</p>
+          {{else}}
+          <form action="/pgs/bookrequest/{{id}}?_method=PUT" method="post">
+            <button class="btn btn-info small" type="submit">Book this PG Now</button>
+          </form>
+          
+          {{/if}}
+          {{/if}}
+        </td>
+        {{else}}
+        <td> <button type="button" class="btn btn-info mb-5" data-toggle="modal" data-target="#exampleModal">
+            Contact Owner
+          </button></td>
+        {{/if}}
+      </tr>
+    </tfoot>
+  </table>
+
+</div>
+</div>
+
+<!-- Button trigger modal -->
+{{!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Contact Owner
+</button> --}}
+
+<!-- Modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contact Owner</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card card-body">
+
+          Sign-up to Book your PG!!
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        {{!-- {{#if ../user}}
+        {{else}} --}}
+        <a class="btn btn-primary small" href="/users/register">Sign-up</a>
+        <a class="btn btn-primary small" href="/users/login">Login</a>
+        {{!-- {{/if}} --}}
+      </div>
+    </div>
+  </div>
+</div>
+{{else}}
+<p>No pgs listed</p>
+{{/each}}
+{{!-- </div> --}}

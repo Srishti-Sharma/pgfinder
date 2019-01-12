@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-sm navbar-light " style="background-color:rgb(93, 160, 143)">
+    <a class="navbar-brand" href="#">PGfinder</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link" href="/">Home </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+            </li>
+        </ul>
+         {{#if user}}
+         <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/userprofile">My Profile</a>
+            </li>
+         </ul>
+         <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link disabled" href="/users/logout">LOGOUT</a>
+            </li>
+         </ul>
+         {{else}}
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link disabled" href="/users/login">LOGIN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="/users/register">Register</a>
+            </li>
+        </ul>
+        {{/if}}
+    </div>
+</nav>
+
+
+    {{!-- {{> _sidebar}} --}}
+    {{!-- {{> _navbar}} --}}
+    {{!-- <div class="container"> --}}
+        {{!-- {{> _msg}}
+        {{> _errors}}
+        {{{body}}} --}}
+

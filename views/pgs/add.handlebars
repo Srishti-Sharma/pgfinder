@@ -1,0 +1,89 @@
+<div class="card  mb-5 mt-5 mx-auto w-50">
+  
+  <h3 class="card-header">Add Rooms</h3>
+  <div class="card-body">
+ 
+  <form action="/pgs" method="POST">
+    <div class="form-group card-header ">
+      <label for="title">Location</label>
+      <input type="text" class="form-control card-body" placeholder="Location" name="location" value="{{location}}" required>
+    </div>
+    <div class="form-group card-header ">
+      <label >Details</label>
+      <textarea class="form-control card-body card-body" name="details" placeholder="Details">{{details}}</textarea>
+    </div>
+    <div class="form-group card-header ">
+      <label >Owner Name</label>
+      <input type="text" class="form-control card-body" name="ownername" placeholder="Your Name" value="{{ownername}}" required>
+    </div>
+    <div class="form-group card-header ">
+      <label >Owner Phone Number</label>
+      <input type="text" class="form-control card-body" name="ownernumber" placeholder="Phone Number" value="{{ownernumber}}"
+        required>
+    </div>
+    <div class="form-group card-header ">
+      <div class="col-md-6">
+      <label >City</label>
+      <input type="text" class="form-control card-body" name="city" placeholder="City" value="{{city}}" required>
+    </div>
+    </div>
+    <div class="form-group card-header ">
+      <div class="col-md-6">
+      <label >State</label>
+      <input type="text" class="form-control card-body" name="state" placeholder="State" value="{{state}}" required>
+    </div>
+    </div>
+    <div class="form-group card-header ">
+      <div class="col-md-6">
+      <label >Country</label>
+      <input type="text" class="form-control card-body" name="country" placeholder="Country" value="{{country}}" required>
+    </div>
+    </div>
+    <div class="form-group card-header ">
+      <label >Price</label>
+      <input type="text" class="form-control card-body" name="price" placeholder="Price" value="{{price}}">
+    </div>
+   <div class="form-group card-header ">
+      <label > Dealer-Type  : </label>
+      <div class="col-md-6">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="dealertype"  value="owner" required>
+          <label class="form-check-label">
+            Owner
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="dealertype"  value="broker">
+          <label class="form-check-label">
+            Dealer(or Broker)
+          </label>
+        </div>
+      </div>
+    </div>
+     <div class="form-group card-header ">
+      <label > Gender Preferred  :  (Gender preferred: eg. male/female/any)</label>
+      <div class="col-md-6">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="male" required>
+          <label class="form-check-label">
+            Male
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="female">
+          <label class="form-check-label">
+            Female
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="other">
+          <label class="form-check-label">
+            Other
+          </label>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  </div>
+</div>

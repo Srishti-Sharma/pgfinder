@@ -1,0 +1,29 @@
+
+
+<div class="bgimg text-white ml-0 mr-5 font-weight-bold ">
+{{!-- <div class="jumbotron text-center "  > --}}
+    <div class="container">    
+    <div class=" text-center text-white display-3"><br>Welcome to PGfinder!</div>
+    <p class="lead text-center">Find rooms for PG with PGfinder.</p>
+    <div class="text-center container">
+
+    <form class="my-2 my-lg-0 text-center " action="/pgs/searchresult" method="POST">
+      <input class="form-control mr-sm-2 text-center " type="text" name="search" placeholder="Type City/State" aria-label="Search">
+      <div class="container my-3">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Get Set Go</button>
+        </div>
+    </form>
+    </div>
+    <hr class="my-4">    
+    <p class="lead text-center">
+        <a class="btn btn-danger btn-lg" href="/pgs/add" role="button">Add a room for PG</a>
+    </p>
+     {{#if (compare user.role "==" "owner")}}
+    <p class="lead text-center">
+        <a class="btn btn-primary btn-lg" href="/pgs" role="button">List room for PG</a>
+    </p>  
+    {{/if}}
+{{!-- </div> --}}
+</div>
+</div>
+

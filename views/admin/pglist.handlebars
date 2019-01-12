@@ -1,0 +1,46 @@
+<h4 class="mt-3">PGs List</h4>
+<div class="table-responsive mt-5 mb-5">
+    <table class="table table-bordered mb-5" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Country</th>
+                <th>Location</th>
+                <th>Retailer's Name</th>
+                <th>Owner's Name</th>
+                <th>Owner's Number</th>
+                <th>Price</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        {{!-- {{ find users}} --}}
+        <tbody>
+            {{#each pgs}}
+            <tr >
+                  <td>
+         <a href = "{{pgimage}}"><img src="{{pgimage}}" style="height:50%;width:150px" class="image-fluid"></a>
+        </td>
+                <td> {{city}}</td>
+                <td> {{state}}</td>
+                <td> {{country}}</td>
+                <td>{{location}}</td>
+                <td>{{ findName user ../users}}</td>
+                <td>{{ownername}}</td>
+                <td>{{ownernumber}}</td>
+
+                {{!-- <td>{{user}}</td> --}}
+                <td>{{price}}</td>
+                <td>
+                    <form method="post" action="/admin/{{id}}?_method=DELETE">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="submit" class="btn btn-danger btn-block" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

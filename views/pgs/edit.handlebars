@@ -1,0 +1,114 @@
+<div class="card mb-5 mt-5 mx-auto ml-5 w-50" > 
+
+ <div class="card-header"> <h3>Edit</h3></div>
+  <div class=" card-body">
+    <div class="row mb-3">
+     
+      <div class="col-md-6 mx-auto">
+        <br>
+        {{#if msg}}
+        <p>  {{msg}} </p>
+        {{/if}}
+        <br>
+              
+          <form action="/pgs/editupload/{{pg.id}}" method="POST" enctype="multipart/form-data">
+                                <div class="avatar-upload ">
+                                    <div class="avatar-edit">
+                                        <input type='file' id="imageUpload" name="myImage">
+                                        <label for="imageUpload"></label>
+                                    </div>
+                                    <div class="avatar-preview">
+                                        <div id="imagePreview" style="background-image: url({{pg.pgimage}}); width:150px;height:150px">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-sm btn-info m-3 ml-5">Upload</button>
+                            </form>
+      
+      </div>
+        <br>
+      </div>
+
+      <form action="/pgs/{{pg.id}}?_method=PUT" method="post" class="mb-5">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" class="form-control" name="location" value="{{pg.location}}" required>
+        </div>
+        <div class="form-group">
+          <label>Details</label>
+          <textarea class="form-control" name="details" required>{{pg.details}}</textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Owner Name</label>
+          <input type="text" class="form-control" name="ownername" placeholder="Your Name" value="{{pg.ownername}}"
+            required>
+        </div>
+        <div class="form-group">
+          <label>Owner Number</label>
+          <input type="tel" class="form-control" name="ownernumber" required value="{{pg.ownernumber}}">
+        </div>
+        <div class="form-group">
+           <label>City</label>
+            <input type="text" class="form-control" name="city" placeholder="City" value="{{pg.city}}">
+          
+        </div>
+        <div class="form-group">
+          <label>State</label>
+            <input type="text" class="form-control" name="state" placeholder="State" value="{{pg.state}}">
+          
+        </div>
+        <div class="form-group">
+         <label>Country</label>
+            <input type="text" class="form-control" name="country" placeholder="Country" value="{{pg.country}}">
+          
+        </div>
+        <div class="form-group">
+          <label>Price</label>
+          <input type="number" class="form-control" name="price" placeholder="Price" value="{{pg.price}}" required>
+        </div>
+        <div class="form-group ">
+          <label> Dealer-Type : </label>
+          <div class="col-md-6">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="dealertype" value="owner" required>
+              <label class="form-check-label">Owner</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="dealertype" value="broker">
+              <label class="form-check-label"> Dealer(or Broker) </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group mb-5">
+          <label> Gender Preferred : (Gender preferred: eg. male/female/any)</label>
+          <div class="col-md-6">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gender" value="male" required>
+              <label class="form-check-label">
+                Male
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gender" value="female">
+              <label class="form-check-label">
+                Female
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gender" value="Any">
+              <label class="form-check-label">
+                Any
+              </label>
+            </div>
+          </div>
+        </div>
+       
+        <button type="submit" class="btn btn-primary ">Submit</button>
+       
+      </form>
+    </div>
+   
+  </div>
+  </div>

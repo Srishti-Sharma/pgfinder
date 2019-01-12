@@ -1,0 +1,29 @@
+<div class="card mx-auto w-50 mt-3">
+  <div class="card-header">
+<H3>Your Profile</H3></div>
+{{#if user}}
+<div class="card-body mb-2">
+  <div class="row">
+    <div class="col-md-5 mr-auto md-5">
+
+      <img src="{{user.profileimage}}" class="img-fluid img-thumbnail" style="height:100% ; width:100%">
+
+    </div>
+    <div class="col-md-6 ml-auto mt-5">
+      <p>Name : {{user.name}}</p>
+      <p>Email : {{user.email}}</p>
+      <p>Gender : {{user.gender}}</p>
+      <p>Phone Number : {{user.phonenumber}}</p>
+      <p>Address : {{user.address}}</p>
+      <a class="btn btn-dark btn-block mb-2" href="/users/editprofile">Edit</a>
+    </div>
+    {{!-- <form method="post" action="/pgs/{{id}}?_method=DELETE">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" class="btn btn-danger btn-block" value="Delete">
+    </form> --}}
+  </div>
+  {{else}}
+  <p>No Profile</p>
+  {{/if}}
+  </div>
+  </div>

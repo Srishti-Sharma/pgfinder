@@ -1,0 +1,83 @@
+<div class="card col-sm">
+    <h4 class="card-header">Items in Your Cart</h4>
+    <div class="card-body" >        
+        <h5 class="text-danger">Pending Requests..</h5>
+        {{#each pgs}}
+        {{!-- <div class="card card-body"> --}}
+            {{#if (searchPG _id ../users.requestedpg)}}       
+
+            <div class="table-responsive-xl table-hover" style="overflow-y: hidden">
+                <table class="table ">
+                    <tr>
+                        <div class="col mr-1 " text-align="center">
+                            
+                             <th> Owner Name</th>
+                            <th> Owner Number </th>
+                            <th>City</th>
+                            <th> State </th>
+                            <th> Country</th>
+                            <th> Price</th>
+                            {{!-- <th> Ratings</th> --}}                           
+                            <th colspan="2" > Action </th>
+                    </tr>
+                    <tr>
+                        <div class="col mr-1">
+                            <td>{{ownername}}</td>
+                            <td> {{ownernumber}} </td>
+                            <td> {{city}} </td>
+                            <td> {{state}} </td>
+                            <td> {{country}} </td>
+                            <td> {{price}} </td>
+                            <td>  <form method="post" action="/pgs/removefromcart/{{id}}?_method=PUT">
+                        <input type="hidden" name="_method" value="PUT">
+                        <input type="submit" class="btn btn-block" style="background-color:forestgreen" value="Cancel">
+                    </form> </td>
+                   
+                    </tr>
+                </table>
+            </div>
+            {{else}}
+          
+            {{/if}}
+            
+           
+        {{!-- </div> --}}
+        {{/each}}
+    </div>
+    <div class="card-body">  
+         <h5 style="color:darkgreen">Approved Requests..</h5>
+        {{#each pgs}}
+        {{!-- <div class="card card-body"> --}}
+            {{#if (searchPG _id ../users.bookedpg)}}
+            <div class="table-responsive-xl " style="overflow-y: hidden">
+                <table class="table">
+                    <tr>
+                        <div class="col mr-1 " text-align="center">
+                             <th> Owner Name</th>
+                            <th> Owner Number </th>
+                            <th>City</th>
+                            <th> State </th>
+                            <th> Country</th>
+                            <th> Price</th>
+                            {{!-- <th> Ratings</th> --}}   
+                    </tr>
+                    <tr>
+                        <div class="col mr-1">
+                            <td>{{ownername}}</td>
+                            <td> {{ownernumber}} </td>
+                            <td> {{city}} </td>
+                            <td> {{state}} </td>
+                            <td> {{country}} </td>
+                            <td> {{price}} </td>
+                           
+                   
+                    </tr>
+                </table>
+            </div>
+            {{/if}}
+            
+           
+        {{!-- </div> --}}
+        {{/each}}
+    </div>
+</div>
